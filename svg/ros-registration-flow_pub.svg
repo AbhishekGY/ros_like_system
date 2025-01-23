@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" style="background-color: #ffffff;">
+  <defs>
+    <!-- Moving packet for registration -->
+    <circle id="regPacket" r="5" fill="#4CAF50">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0s; packet1.end + 1s" repeatCount="1"/>
+    </circle>
+    
+    <!-- Moving packet for confirmation -->
+    <circle id="confirmPacket" r="5" fill="#FF9800">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="packet1.end + 0.5s" repeatCount="1"/>
+    </circle>
+  </defs>
+
+  <!-- Master Node -->
+  <g transform="translate(280,60)">
+    <rect width="280" height="180" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Master Node</text>
+    
+    <!-- Internal data structures -->
+    <g transform="translate(20,40)" font-family="monospace" font-size="12">
+      <!-- Initially empty data structures -->
+      <rect id="dataRect" width="240" height="130" fill="#f8f9fa" stroke="#ddd"/>
+      <text id="pub1" x="5" y="20" opacity="1">publishers = {</text>
+      <g font-family="monospace" font-size="12">
+        <text x="5" y="40">  # Empty initially</text>
+        <text x="5" y="60">}</text>
+        <animate 
+          attributeName="opacity"
+          from="1" to="0"
+          dur="0.5s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </g>
+      <text id="pub2" x="5" y="40" opacity="0">
+        "arm_state": [
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub3" x="5" y="60" opacity="0">
+        {
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub4" x="5" y="80" opacity="0">
+        "node_name": "arm_publisher",
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub5" x="5" y="100" opacity="0">
+        "address": "localhost:11512"
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub6" x="5" y="120" opacity="0">
+        }
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub7" x="10" y="120" opacity="0">
+        ]
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+      <text id="pub8" x="15" y="120" opacity="0">
+        }
+        <animate 
+          attributeName="opacity"
+          from="0" to="1"
+          dur="1s"
+          begin="packet1.end + 0.25s"
+          fill="freeze"/>
+      </text>
+    </g>
+  </g>
+  <!-- Visualizer Node -->
+  <g transform="translate(300,320)">
+    <rect width="240" height="80" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <text x="120" y="45" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Publisher</text>
+  </g>
+
+  <!-- Registration message path -->
+  <path id="regPath" 
+        d="M 300,200 300,320" 
+        fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="4,4">
+  </path>
+
+  <!-- Confirmation message path -->
+  <path id="confirmPath"
+        d="M 540,200 540,320"
+        fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="4,4">
+  </path>
+
+  <!-- Animated registration packet -->
+  <circle r="5" fill="#4CAF50">
+    <animateMotion id="packet1"
+                   path="M 300,320 300,240"
+                   dur="2s"
+                   begin="0.5s"
+                   fill="freeze"
+                   repeatCount="1"/>
+    <animate attributeName="opacity"
+             values="0;1;1;0"
+             dur="2s"
+             begin="0.5s"
+             repeatCount="1"/>
+  </circle>
+
+  <!-- Animated confirmation packet -->
+  <circle r="5" fill="#FF9800">
+    <animateMotion id="packet2"
+                   path="M 540,240 540,320"
+                   dur="2s"
+                   begin="packet1.end + 0.5s"
+                   fill="freeze"
+                   repeatCount="1"/>
+    <animate attributeName="opacity"
+             values="0;1;1;0"
+             dur="2s"
+             begin="packet1.end + 0.5s"
+             repeatCount="1"/>
+  </circle>
+
+   <g font-family="Arial" font-size="12" fill="#666">
+    <!-- Registration label -->
+    <text x="300" y="280" text-anchor="middle">
+      Register Publisher (arm_state)
+      <animate attributeName="opacity"
+               values="0;1;1;0"
+               dur="2s"
+               begin="0.5s"
+               repeatCount="1"/>
+    </text>
+    
+    <!-- Confirmation label -->
+    <text x="480" y="280" text-anchor="middle">
+      Registration Confirmed
+      <animate attributeName="opacity"
+               values="0;1;1;0"
+               dur="2s"
+               begin="packet1.end + 0.5s"
+               repeatCount="1"/>
+    </text>
+  </g>
+
+

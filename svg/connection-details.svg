@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" style="background-color: #ffffff;">
+  <!-- Master Node -->
+  <g transform="translate(350,10)">
+    <rect width="300" height="150" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Master Node</text>
+    
+    <!-- Master's stored publisher info -->
+    <rect x="20" y="50" width="260" height="90" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+    <g font-family="monospace" font-size="12">
+      <text x="30" y="70">publisher_info = {</text>
+      <text x="40" y="90">  "node_name": "arm_publisher",</text>
+      <text x="40" y="110">  "address": "localhost:11512"</text>
+      <text x="30" y="130">}</text>
+    </g>
+  </g>
+
+  <!-- Subscriber Node -->
+  <g transform="translate(350,250)">
+    <rect width="300" height="140" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Subscriber Node</text>
+    
+    <!-- Empty connection info initially -->
+    <rect x="20" y="40" width="260" height="95" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+    <text x="30" y="60" font-family="monospace" font-size="12" opacity="1">publisher_info =</text>
+    
+    <!-- Updated connection info appears later -->
+    <g font-family="monospace" font-size="12" opacity="0">
+      <text x="30" y="60">publisher_info = {</text>
+      <text x="40" y="80">  "node_name": "arm_publisher",</text>
+      <text x="40" y="100">  "address": "localhost:11512"</text>
+      <text x="30" y="120">}</text>
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="1s"
+               begin="3s"
+               fill="freeze"/>
+    </g>
+  </g>
+
+  <!-- Message Packet -->
+  <g>
+    <!-- Connection Message -->
+    <rect id="message" x="390" y="80" width="210" height="100" rx="5" 
+          fill="#fff" stroke="#2196F3" stroke-width="2" opacity="0">
+      <animateMotion path="M 50,10 50,100"
+               begin="1s"
+               dur="2s"
+               repeatCount="1"/>
+      <animate attributeName="opacity"
+               values="0;1;0"
+               dur="2s"
+               begin="1s"
+               fill="freeze"/>
+    </rect>
+    
+    <!-- Message Content -->
+    <g font-family="monospace" font-size="11" opacity="0">
+      <text x="400" y="90">Message {</text>
+      <text x="410" y="110">  topic: "__publisher_info__",</text>
+      <text x="410" y="130">  data: {</text>
+      <text x="430" y="150">    ...connection details...</text>
+      <text x="410" y="170">  }</text>
+      <animateMotion path="M 50,10 50,100"
+               begin="1s"
+               dur="2s"
+               repeatCount="1"/>
+      <animate attributeName="opacity"
+               values="0;1;0"
+               dur="2s"
+               begin="1s"
+               fill="freeze"/>
+    </g>
+  </g>
+
+
+  <!-- Action Labels -->
+  <g font-family="Arial" font-size="12" fill="#666">
+    <!-- Step 1 -->
+    <g opacity="0">
+      <text x="50" y="30">1. Master prepares publisher connection details</text>
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="0.5s"
+               begin="0.5s"
+               fill="freeze"/>
+    </g>
+    
+    <!-- Step 2 -->
+    <g opacity="0">
+      <text x="50" y="50">2. Creates __publisher_info__ message</text>
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="0.5s"
+               begin="1s"
+               fill="freeze"/>
+    </g>
+    
+    <!-- Step 3 -->
+    <g opacity="0">
+      <text x="50" y="70">3. Sends message to subscriber</text>
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="0.5s"
+               begin="1.5s"
+               fill="freeze"/>
+    </g>
+    
+    <!-- Step 4 -->
+    <g opacity="0">
+      <text x="50" y="90">4. Subscriber stores connection info</text>
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="0.5s"
+               begin="3s"
+               fill="freeze"/>
+    </g>
+  </g>
+</svg>
