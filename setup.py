@@ -13,7 +13,7 @@ setup(
     description="A ROS-like distributed system implementation in Python",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/ros-like-system",
+    url="https://github.com/AbhishekGY/ros-like-system",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -21,5 +21,12 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
+    entry_points={
+        'console_scripts': [
+            'ros-master=nodes.master_node:main',
+            'ros-publisher=examples.test_publisher:main',
+            'ros-visualizer=examples.robot_visualizer:main',
+        ],
+    },
     python_requires=">=3.7",
 )

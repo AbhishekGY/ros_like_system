@@ -4,8 +4,8 @@ import threading
 from queue import Queue, Empty
 import math
 from dataclasses import dataclass
-from ..core.ros_core import NetworkAddress, NetworkNode, Message, logger
-from ..nodes.node import Node
+from core.ros_core import NetworkAddress, NetworkNode, Message, logger
+from nodes.node import Node
 
 @dataclass
 class ArmState:
@@ -129,7 +129,7 @@ def run_visualization(state_queue: Queue, screen_width=800, screen_height=600):
         clock.tick(60)  # 60 FPS
         logger.debug(f"Rendered frame with joint angles: {current_state.joint1_angle:.2f}, {current_state.joint2_angle:.2f}")
 
-async def main():
+async def run_node():
     # Create and start visualizer node
     node_address = NetworkAddress("localhost", 0)  # Random port
     master_address = NetworkAddress("localhost", 11511)
@@ -157,5 +157,11 @@ async def main():
     finally:
         pygame.quit()
 
+def main():
+    try:
+        asyncio.run(run_node())
+    except KeyboardInterrupt:
+        print("\nShutting down...")
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

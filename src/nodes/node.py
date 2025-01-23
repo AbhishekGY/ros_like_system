@@ -2,7 +2,7 @@
 import asyncio
 import argparse
 import signal
-from ..core.ros_core import NetworkAddress, NetworkNode, Message, logger
+from core.ros_core import NetworkAddress, NetworkNode, Message, logger
 
 class Node:
     def __init__(self, name: str, address: NetworkAddress, master_address: NetworkAddress):

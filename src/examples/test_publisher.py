@@ -1,7 +1,7 @@
 import asyncio
 import math
-from ..core.ros_core import NetworkAddress, Message
-from ..nodes.node import Node
+from core.ros_core import NetworkAddress, Message
+from nodes.node import Node
 
 class ArmStatePublisher(Node):
     def __init__(self, name: str, address: NetworkAddress, master_address: NetworkAddress):
@@ -25,7 +25,7 @@ class ArmStatePublisher(Node):
             time += 0.05
             await asyncio.sleep(1.0/60)  # 20Hz update rate
 
-async def main():
+async def run_node():
     node_address = NetworkAddress("localhost", 0)
     master_address = NetworkAddress("localhost", 11511)
     publisher = ArmStatePublisher("arm_state_publisher", node_address, master_address)
@@ -42,5 +42,11 @@ async def main():
         publisher.running = False
         publisher.stop()
 
+def main():
+    try:
+        asyncio.run(run_node())
+    except KeyboardInterrupt:
+        print("\nShutting down...")
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

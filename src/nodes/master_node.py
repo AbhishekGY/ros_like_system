@@ -2,7 +2,7 @@ import asyncio
 import cmd
 import threading
 import queue
-from ..core.ros_core import NetworkAddress, NetworkNode, Message, logger
+from core.ros_core import NetworkAddress, NetworkNode, Message, logger
 
 class Master:
     """Master node that manages the entire distributed system"""
@@ -227,9 +227,13 @@ async def run_master():
     
     # Run the master node
     await master.start()
-
-if __name__ == "__main__":
+    
+def main():
     try:
         asyncio.run(run_master())
     except KeyboardInterrupt:
         print("\nShutting down...")
+
+
+if __name__ == "__main__":
+    main()
