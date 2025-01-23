@@ -33,7 +33,7 @@ The system implements a publish-subscribe (pub/sub) architecture with a central 
 ## Registration Process
 
 ### Publisher Registration
-![Publisher Registration Flow](docs/images/ros-registration-flow_pub.gif)
+![Publisher Registration Flow](./docs/images/publisher_registration.gif)
 
 The publisher registration process involves:
 1. Publisher sends registration message to master
@@ -45,7 +45,7 @@ The publisher registration process involves:
 4. Publisher begins waiting for subscriber connections
 
 ### Subscriber Registration
-![Subscriber Registration Flow](docs/images/ros-registration-flow_sub.gif)
+![Subscriber Registration Flow](./docs/images/subscriber_registration.gif)
 
 When a subscriber wants to receive messages:
 1. Subscriber sends registration request to master
@@ -54,7 +54,7 @@ When a subscriber wants to receive messages:
 4. Subscriber is added to the distribution list
 
 ## Connection Establishment
-![Connection Details Flow](docs/images/connection-details.gif)
+![Connection Details Flow](./docs/images/connection_details.gif)
 
 After registration, nodes establish connections:
 1. Master provides publisher connection details to subscriber
